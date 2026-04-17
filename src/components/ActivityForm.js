@@ -14,10 +14,10 @@ const ActivityForm = ({ addActivity }) => {
       return;
     }
     
-    // Validate date
-    const selectedDate = new Date(date);
+    // Validate date - no future dates
+    const [year, month, day] = date.split('-');
+    const selectedDate = new Date(year, month - 1, day);
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
     
     if (selectedDate > today) {
       alert('Date cannot be in the future');
@@ -33,6 +33,15 @@ const ActivityForm = ({ addActivity }) => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Get today's date in local timezone (YYYY-MM-DD format)
+  const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   };
 
   return (
@@ -71,7 +80,7 @@ const ActivityForm = ({ addActivity }) => {
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          max={new Date().toISOString().split('T')[0]}
+          max={getTodayDate()}
           disabled={isSubmitting}
         />
       </div>
