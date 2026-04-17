@@ -1,0 +1,20 @@
+{
+  "name": "studor-backend",
+  "version": "1.0.0",
+  "description": "Backend for PathCredit Logger",
+  "main": "server.js",
+  "scripts": {
+    "cleanup": "lsof -ti:5000 | xargs kill -9 2>/dev/null || true",
+    "start": "npm run cleanup && node server.js",
+    "dev": "npm run cleanup && nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

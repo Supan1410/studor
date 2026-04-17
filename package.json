@@ -1,0 +1,43 @@
+{
+  "name": "studor",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^7.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "cleanup": "killall -9 node npm 2>/dev/null || true && sleep 1",
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+    "start:server": "cd server && npm start",
+    "start:client": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+    "start:all": "npm run cleanup && concurrently \"npm run start:server\" \"npm run start:client\"",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "no-unused-vars": "off",
+      "no-undef": "off"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
