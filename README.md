@@ -1,7 +1,9 @@
 Hope you like it :)
- 
+
+
 ## How to Run
 
+Also no git ignore created so .env file is there.
 ```bash
 npm install
 npm run start:all
